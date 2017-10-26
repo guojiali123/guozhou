@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			*{
+				padding: 0;
+				list-style: none;
+				margin: 0;
+			}
+			h1{
+				text-align: center;
+				margin-top: 30px;
+			}
+			.wrap{
+				width: 500px;
+				border: 1px solid #333333;
+				margin: auto;
+			}
+			.wrap h2{
+				margin:10px 0px 10px 10px;
+			}
+			.wrap p{
+				margin:10px 0px 10px 40px;
+			}
+			form{
+				width: 500px;
+				height: 50px;
+				background: #0000CC;
+				margin: auto;
+			}
+			#inpu1{
+				width: 100px;
+				height: 20px;
+				margin-left: 20px;
+				margin-top: 15px;
+			}
+			#inpu2{
+				width: 200px;
+				height: 20px;
+				margin-left: 10px;
+			}
+			button{
+				width: 100px;
+				height: 25px;
+				margin-left:10px;
+			}
+		</style>
+		<script>
+			$(function(){
+				$.ajax({
+				url:"http://localhost:3000/index",
+				type:"POST",
+				data:{guo:req.wrap.message,name:req.wrap.name},
+				success:function(e){
+					$("button").click(function(){
+						$('.wrap').append('<h2>'+e.name+"</h2>")
+						$('.wrap').append('<p>'+e.name+"</p>")
+					})
+				}
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<h1>Skier Dictionary</h1>
+		<div class="wrap">
+			<h2></h2>
+			<p></p>
+		</div>
+		<form>
+		<input type="text" id="inpu1" placeholder="name" name="message"/>
+		<input type="text" id="inpu2" placeholder="content" name="name"/>
+		<button>Add Tem</button>
+		</form>
+	</body>
+</html>
